@@ -11,5 +11,11 @@ class PagesController < ApplicationController
   @title="Contact"
   end
 
+  def video
+  send_file 'videos/fifa.flv',
+  :filename => 'fifavideo' + '.flv',
+  :type => 'video/x-flv',
+  :disposition => 'inline'
+  end
 
 end

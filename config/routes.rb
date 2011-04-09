@@ -6,6 +6,7 @@ Tournoi::Application.routes.draw do
   
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
+  match '/video',   :to => 'pages#video'
  
   root :to => "pages#home"
 
