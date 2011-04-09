@@ -1,0 +1,30 @@
+<%= form_for(@tournament) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :game %><br />
+    <%= f.text_field :game %>
+  </div>
+  <div class="field">
+    <%= f.label :support %><br />
+    <%= f.text_field :support %>
+  </div>
+   <div class="field">
+    <%= f.label :conf %><br />
+    <%= f.text_field :conf %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="actions">
+    <%= f.submit button %>
+  </div>
+<% end %>

@@ -1,4 +1,9 @@
 Tournoi::Application.routes.draw do
+  
+  resources :tournaments do
+	resources :phases
+  end
+  
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
  

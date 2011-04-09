@@ -1,0 +1,16 @@
+<table class="tournament">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= @tournament.name %>
+      </h1>
+    </td>
+    <td class="sidebar round">
+      <strong>Name</strong> <%= @tournament.name %><br />
+	  <strong>Description</strong> <%= @tournament.description %><br />
+      <strong>URL</strong> <%= link_to tournament_path(@tournament), @tournament %><br />
+      <strong>Phases</strong> <%= @tournament.phases.count %>
+  
+    </td>
+  </tr>
+</table>
