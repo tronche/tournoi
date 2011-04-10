@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110409133429) do
+ActiveRecord::Schema.define(:version => 20110410172337) do
 
   create_table "parent_phases", :id => false, :force => true do |t|
     t.integer  "parent_phase_id"
@@ -22,15 +22,19 @@ ActiveRecord::Schema.define(:version => 20110409133429) do
   create_table "phases", :force => true do |t|
     t.string   "name"
     t.string   "status"
+    t.string   "type"
     t.text     "description"
     t.integer  "participants"
     t.integer  "qualifies"
-    t.integer  "tournament_id"
+    t.integer  "pointsvict"
+    t.integer  "pointsnul"
+    t.boolean  "retour"
+    t.integer  "tournaments_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "phases", ["tournament_id"], :name => "index_phases_on_tournaments_id"
+  add_index "phases", ["tournaments_id"], :name => "index_phases_on_tournaments_id"
 
   create_table "tournaments", :force => true do |t|
     t.string   "name"
