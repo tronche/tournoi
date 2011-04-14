@@ -2,7 +2,7 @@ class PhasesController < ApplicationController
 
 def show
 	@tournament = Tournament.find(params[:tournament_id]) 
-	@phase = @tournament.leagues.find(params[:id]) 
+	@phase = @tournament.phases.find(params[:id]) 
 	@title = @phase.name
 end
   

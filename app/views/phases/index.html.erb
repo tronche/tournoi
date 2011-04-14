@@ -1,4 +1,6 @@
-<h1>All Phases</h1>
+<h1>All Phases of <%= @tournament.name %></h1>
+
+<strong><%= link_to "Create New League ", new_tournament_league_path(@tournament) %></strong><br />
 
 <ul class="phases">
   <%= render @phases %>

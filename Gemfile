@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.4'
 gem 'sqlite3'
+gem 'gravatar_image_tag', '1.0.0.pre2'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -25,3 +26,8 @@ gem 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+group :development do
+  gem 'annotate-models', '1.0.4'
+end
+

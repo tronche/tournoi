@@ -17,4 +17,9 @@ module ApplicationHelper
    "#{wearepes}"
   end
   
+  def logo
+    image_tag("logo.png", :alt => "Tournois", :class => "round")
+  end
+
+  
 end

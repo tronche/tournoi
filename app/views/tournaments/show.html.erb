@@ -9,7 +9,8 @@
       <strong>Name</strong> <%= @tournament.name %><br />
 	  <strong>Description</strong> <%= @tournament.description %><br />
       <strong>URL</strong> <%= link_to tournament_path(@tournament), @tournament %><br />
-      <strong>Phases</strong> <%= @tournament.phases.count %>
+      <strong>Phases</strong> <%= link_to "Voir", tournament_phases_path(@tournament)%><br />
+	  <strong>Nombre</strong> <%= @tournament.phases.count %>
   
     </td>
   </tr>

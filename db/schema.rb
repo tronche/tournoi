@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110410172337) do
+ActiveRecord::Schema.define(:version => 20110413213144) do
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.integer  "phase_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "parent_phases", :id => false, :force => true do |t|
     t.integer  "parent_phase_id"
@@ -29,12 +36,28 @@ ActiveRecord::Schema.define(:version => 20110410172337) do
     t.integer  "pointsvict"
     t.integer  "pointsnul"
     t.boolean  "retour"
-    t.integer  "tournaments_id"
+    t.integer  "tournament_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "phases", ["tournaments_id"], :name => "index_phases_on_tournaments_id"
+  create_table "players", :force => true do |t|
+    t.string   "pseudo"
+    t.string   "status"
+    t.integer  "tournament_id"
+    t.integer  "user_id"
+    t.boolean  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "statuses", :force => true do |t|
+    t.integer  "player_id"
+    t.integer  "group_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tournaments", :force => true do |t|
     t.string   "name"
@@ -46,5 +69,18 @@ ActiveRecord::Schema.define(:version => 20110410172337) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "image"
+    t.string   "encrypted_password"
+    t.string   "salt"
+    t.boolean  "admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end
