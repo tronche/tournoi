@@ -1,0 +1,4 @@
+<%= form_for current_user.inscriptions.find_by_tournament_id(@tournament),
+             :html => { :method => :delete } do |f| %>
+  <div class="actions"><%= f.submit "Desinscrit" %></div>
+<% end %>

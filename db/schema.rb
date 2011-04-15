@@ -10,11 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110413213144) do
+ActiveRecord::Schema.define(:version => 20110415201238) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.integer  "phase_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inscriptions", :force => true do |t|
+    t.string   "pseudo"
+    t.string   "status"
+    t.integer  "tournament_id"
+    t.integer  "user_id"
+    t.boolean  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,18 +51,8 @@ ActiveRecord::Schema.define(:version => 20110413213144) do
     t.datetime "updated_at"
   end
 
-  create_table "players", :force => true do |t|
-    t.string   "pseudo"
-    t.string   "status"
-    t.integer  "tournament_id"
-    t.integer  "user_id"
-    t.boolean  "team_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "statuses", :force => true do |t|
-    t.integer  "player_id"
+    t.integer  "inscription_id"
     t.integer  "group_id"
     t.string   "status"
     t.datetime "created_at"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20110413213144) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "participants"
   end
 
   create_table "users", :force => true do |t|

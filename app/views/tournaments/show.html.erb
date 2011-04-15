@@ -4,7 +4,11 @@
       <h1>
         <%= @tournament.name %>
       </h1>
+		<%= @tournament.status %>
+		
+	  <%= render 'inscrit_form' if signed_in? %>
     </td>
+
     <td class="sidebar round">
       <strong>Name</strong> <%= @tournament.name %><br />
 	  <strong>Description</strong> <%= @tournament.description %><br />
@@ -13,5 +17,16 @@
 	  <strong>Nombre</strong> <%= @tournament.phases.count %>
   
     </td>
+  </tr>
+  <tr>
+	<td class="round">
+	  <b>Participants :</b>
+	    <%= @tournament.inscriptions.count %>	Sur <%= @tournament.participants %>
+		<ul class="users">
+			<% @tournament.users.each do |user| %>
+			<%= render user %>
+			<% end %>
+		</ul>
+	</td>
   </tr>
 </table>

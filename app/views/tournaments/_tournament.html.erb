@@ -1,8 +1,12 @@
-<li>
-  <%= link_to tournament.name, tournament %>
-  <%= link_to "edit", edit_tournament_path(tournament),
-                                :title => "Edit #{tournament.name}" %>
-  <%= link_to "delete", tournament, :method => :delete, :confirm => "You sure?",
-                                :title => "Delete #{tournament.name}" %>
-
+<li class="round">
+  <ul><li><%= link_to tournament.name, tournament %></li>
+  <li><%= tournament.status %></li>
+  <li><% if current_user.inscrit?(tournament) %>  Inscrit  <% end %></li>
+  </ul>
+  <ul>
+  <li><%= link_to "edit", edit_tournament_path(tournament),
+                                :title => "Edit #{tournament.name}" %></li>
+  <li><%= link_to "delete", tournament, :method => :delete, :confirm => "You sure?",
+                                :title => "Delete #{tournament.name}" %></li>
+  </ul>
 </li>

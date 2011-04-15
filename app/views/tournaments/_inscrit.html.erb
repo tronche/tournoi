@@ -1,0 +1,4 @@
+<%= form_for current_user.inscriptions.build(:tournament_id => @tournament.id) do |f| %>
+  <div><%= f.hidden_field :tournament_id %></div>
+  <div class="actions"><%= f.submit "Inscription" %></div>
+<% end %>

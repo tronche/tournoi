@@ -15,21 +15,22 @@
 #
 
 class User < ActiveRecord::Base
-has_many :groups
-
 attr_accessor :password
 attr_accessible :name, :email, :password, :password_confirmation
 
+has_many :inscriptions, :dependent => :destroy
+has_many :tournaments, :through => :inscriptions
+
+
+
+
 email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
-
 validates :name, :presence => true,
 				 :length   => { :maximum => 50 }
-
 validates :email, :presence => true,
 				  :format   => { :with => email_regex },
 				  :uniqueness => { :case_sensitive => false }
-				  
+
 # Automatically create the virtual attribute 'password_confirmation'.
 validates :password, :presence     => true,
                      :confirmation => true,
@@ -52,6 +53,20 @@ before_save :encrypt_password
        user = find_by_id(id)
        (user && user.salt == cookie_salt) ? user : nil
     end
+	
+	# Inscriptions au Tournois
+	
+	def inscrit?(tournament)
+	   inscriptions.find_by_tournament_id(tournament)
+	end
+
+	def inscrit!(tournament)
+      inscriptions.create!(:tournament_id => tournament.id)
+	end
+  
+	def desinscrit!(tournament)
+      inscriptions.find_by_tournament_id(tournament).destroy
+	end
 
 
 private

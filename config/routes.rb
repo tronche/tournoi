@@ -1,15 +1,19 @@
 Tournoi::Application.routes.draw do
 
-  
+	resources :users
   resources :sessions, :only => [:new, :create, :destroy]
 
   resources :tournaments do
 	resources :phases, :only => [:index, :show]
 	resources :leagues, :except => [:index]
-	#resources :phases, :leagues
+	member do
+	get :inscriptions
+	end
   end
-  
-  resources :users
+ 
+  resources :inscriptions, :only => [:create, :destroy]
+
+
   
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'

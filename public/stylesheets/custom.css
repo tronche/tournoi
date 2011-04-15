@@ -119,6 +119,16 @@ div.field, div.actions {
   margin-bottom: 10px;
 }
 
+/* USers */
+
+ul.users {
+  margin-top: 1em;
+}
+
+.users li {
+  list-style: none;
+}
+
 
 /* Tournament & User Show Page */
 table.profile {
@@ -148,19 +158,19 @@ td.sidebar {
 
 ul.tournaments {
   margin-top: 1em;
-  width: 90%;
+  width: 30%;
 }
 
 .tournaments li {
-  list-style: disc;
-  background: #ffc;
-  width: 14em;
-  border-right: 1px solid #000;
-  padding: 0 0 1em 0;
+  list-style: none;
+  background: #CCCCFF;
   margin-bottom: 1em;
-  background-color: #ffc;
-  color: #333;
+  background-color: #CCCCFF;
 }
+
+.tournaments li.inscrit {
+  background-color: green;
+  }
 
 .field_with_errors {
   margin-top: 10px;

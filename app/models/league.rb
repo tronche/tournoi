@@ -21,5 +21,8 @@
 class League < Phase
 	attr_accessible :pointsvict,:pointsnul,:retour
 	belongs_to :tournament
-
+	
+	validates_numericality_of :pointsvict, :only_integer => true
+	validates_numericality_of :pointsnul, :only_integer => true
+	validates_inclusion_of :retour, :in => [true, false] 
 end

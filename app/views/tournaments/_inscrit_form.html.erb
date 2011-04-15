@@ -1,0 +1,9 @@
+<% unless current_user?(@user) %>
+  <div id="inscription_form">
+  <% if current_user.inscrit?(@tournament) %>
+    <%= render 'desinscrit' %>
+  <% else %>
+    <%= render 'inscrit' %>
+  <% end %>
+  </div>
+<% end %>

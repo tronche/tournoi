@@ -1,17 +1,18 @@
 # == Schema Information
-# Schema version: 20110413181005
+# Schema version: 20110415201238
 #
 # Table name: tournaments
 #
-#  id          :integer         not null, primary key
-#  name        :string(255)
-#  description :text
-#  game        :string(255)
-#  support     :string(255)
-#  conf        :string(255)
-#  status      :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id           :integer         not null, primary key
+#  name         :string(255)
+#  description  :text
+#  game         :string(255)
+#  support      :string(255)
+#  conf         :string(255)
+#  status       :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  participants :integer
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
