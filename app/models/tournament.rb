@@ -46,6 +46,9 @@ def set_inscription(etat)
 end
 
 def verify
+  # si status est nil on le met a 0
+  self.status||= "0"
+
   unless self.status > 1
 	if self.plein? 
 		set_inscription(1)
