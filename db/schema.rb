@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110415201238) do
+ActiveRecord::Schema.define(:version => 20110416173018) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(:version => 20110415201238) do
 
   create_table "inscriptions", :force => true do |t|
     t.string   "pseudo"
-    t.string   "status"
+    t.integer  "status",        :limit => 255
     t.integer  "tournament_id"
     t.integer  "user_id"
-    t.boolean  "team_id"
+    t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,13 +59,23 @@ ActiveRecord::Schema.define(:version => 20110415201238) do
     t.datetime "updated_at"
   end
 
+  create_table "teams", :force => true do |t|
+    t.string   "name"
+    t.decimal  "stars",      :precision => 2, :scale => 1
+    t.string   "logo"
+    t.string   "division"
+    t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tournaments", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "game"
     t.string   "support"
     t.string   "conf"
-    t.string   "status"
+    t.integer  "status",       :limit => 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "participants"

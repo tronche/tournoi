@@ -1,12 +1,18 @@
-<li class="round">
-  <ul><li><%= link_to tournament.name, tournament %></li>
-  <li><%= tournament.status %></li>
-  <li><% if current_user.inscrit?(tournament) %>  Inscrit  <% end %></li>
-  </ul>
-  <ul>
-  <li><%= link_to "edit", edit_tournament_path(tournament),
-                                :title => "Edit #{tournament.name}" %></li>
-  <li><%= link_to "delete", tournament, :method => :delete, :confirm => "You sure?",
-                                :title => "Delete #{tournament.name}" %></li>
-  </ul>
-</li>
+<table "class=tournament">
+	<tr>
+		<td class="round fixed <%= call_status_css(tournament) %>">
+			<strong><%= tournament.return_status %></strong>
+		</td>
+		<td class="fixed">
+		<strong><%= link_to tournament.name, tournament %><strong>
+		</td>
+		<td class="fixed">
+			<% if signed_in? %> <% if current_user.inscrit?(tournament) %><%= current_user.etat_inscrit(tournament) %></strong><% end %><% end %> 
+		</td>
+	</tr>
+</table
+
+
+
+
+		

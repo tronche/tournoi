@@ -2,12 +2,12 @@ class TournamentsController < ApplicationController
 
   def destroy
     Tournament.find(params[:id]).destroy
-    flash[:success] = "Tournament destroyed."
+    flash[:success] = "Tournoi detruit."
     redirect_to tournaments_path
   end
 
   def index
-    @title = "All Tournaments"
+    @title = "Tous les tournois"
     @tournaments = Tournament.all
   end
 
@@ -18,7 +18,7 @@ class TournamentsController < ApplicationController
   
   def new
     @tournament = Tournament.new
-	@title = "Sign up"
+	@title = "Participez"
   end
   
   def create
@@ -39,10 +39,10 @@ class TournamentsController < ApplicationController
     def update
 	@tournament = Tournament.find(params[:id])
     if @tournament.update_attributes(params[:tournament])
-      flash[:success] = "Tournament updated."
+      flash[:success] = "Tournoi mis a jour."
       redirect_to @tournament
     else
-      @title = "Edit tournament"
+      @title = "Editer tournoi"
       render 'edit'
     end
   end

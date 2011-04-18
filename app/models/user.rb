@@ -59,14 +59,21 @@ before_save :encrypt_password
 	def inscrit?(tournament)
 	   inscriptions.find_by_tournament_id(tournament)
 	end
+	
+	def titulaire?(tournament)
+	   inscrit?(tournament) and  inscriptions.find_by_tournament_id(tournament).status == 0
+	end
 
-	def inscrit!(tournament)
-      inscriptions.create!(:tournament_id => tournament.id)
+	def etat_inscrit(tournament)
+	# Quels etats
+	output = case inscriptions.find_by_tournament_id(tournament).status
+		when 0 then 'Inscrit'
+		when 1 then 'Reserviste'
+		else 'Status Inconnu'
+		end
+	output   
 	end
-  
-	def desinscrit!(tournament)
-      inscriptions.find_by_tournament_id(tournament).destroy
-	end
+	
 
 
 private

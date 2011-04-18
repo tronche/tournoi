@@ -1,0 +1,5 @@
+<%= link_to "Demarrer tournoi", 
+          tournament_path(@tournament, 
+                    :tournament => { :status => 2}),
+          :method => :put, 
+          :confirm => "Sur ?" %>

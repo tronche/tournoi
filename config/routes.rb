@@ -11,7 +11,7 @@ Tournoi::Application.routes.draw do
 	end
   end
  
-  resources :inscriptions, :only => [:create, :destroy]
+  resources :inscriptions, :only => [:create, :destroy, :update]
 
 
   

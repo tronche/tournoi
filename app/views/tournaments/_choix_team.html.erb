@@ -1,0 +1,14 @@
+<% if current_user.titulaire?(@tournament) %>
+		<%= form_for (@tournament.inscriptions.find_by_user_id(current_user)) do |f| %>
+			<%= render 'shared/error_messages', :object => f.object %>
+			<div class="field">
+			<%= f.label :team %><br />
+			<%= f.collection_select(:team_id, Teams.find(:all), :id, :name) %>
+			</div>
+			<div class="actions">
+			<%= f.submit "Choisir Equipe" %>
+			</div>
+		<% end %>
+<% end %>
+
+

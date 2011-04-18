@@ -1,5 +1,12 @@
 class LeaguesController < ApplicationController
 
+def destroy
+  @tournament = Tournament.find(params[:tournament_id])
+  @tournament.leagues.find(params[:id]).destroy
+  flash[:success] = "Championnat detruit."
+  redirect_to tournament_phases_path(@tournament)
+end
+
 def new
   @tournament = Tournament.find(params[:tournament_id]) 
   @league = League.new

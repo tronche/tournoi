@@ -1,0 +1,5 @@
+<%= link_to "Autoriser Inscriptions", 
+          tournament_path(@tournament, 
+                    :tournament => { :status => 1}),
+          :method => :put, 
+          :confirm => "Sur ?" %>

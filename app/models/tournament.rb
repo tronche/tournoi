@@ -16,7 +16,7 @@
 #
 
 class Tournament < ActiveRecord::Base
-attr_accessible :name, :description, :game, :support, :conf, :participants
+attr_accessible :name, :description, :game, :support, :conf, :participants, :status
 
 has_many :phases, :dependent => :destroy
 has_many :leagues, :dependent => :destroy
@@ -36,10 +36,51 @@ validates_inclusion_of :conf, :in => ['FUMA','SEMA','AUTO'],
 				  :message   => 'Valeurs Possible : FUMA, SEMA, AUTO'
 validates_numericality_of :participants, :only_integer => true
 
-before_create :set_status
+before_save :verify
 
+#--- Etats
+
+
+def set_inscription(etat)
+  self.status = etat
 end
 
-def set_status
-  self.status = "Inscriptions Ouvertes"
+def verify
+  unless self.status > 1
+	if self.plein? 
+		set_inscription(1)
+	else
+		set_inscription(0)
+	end
+  end
+end
+
+def return_status
+  # Quels Etats
+   output = case status
+   when 0 then 'Inscription Ouvertes'
+   when 1 then 'Tournoi Plein, Reservistes'
+   when 2 then 'Clos, Choix des equipes'
+   when 2 then 'Tournoi Demarre'
+   when 3 then 'Tournoi Clos'
+   else 'Status Inconnu'
+   end
+   output   
+end
+
+# Le nombre de joueurs demandé est il requis ??
+def plein?
+	   self.inscriptions.count >= self.participants
+end
+
+# Le tournoi est il encore ouvert aux inscriptions ??
+def open?
+	   self.status < 2
+end
+
+# Est on en phase de choix des équipes ??
+def choix?
+	   self.status == 2
+end
+
 end

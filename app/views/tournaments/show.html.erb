@@ -1,12 +1,27 @@
-<table class="tournament">
+<table class="tournaments">
   <tr>
-    <td class="main">
+	<td class="admin round">
+	   <%= link_to "editer", edit_tournament_path(@tournament), :title => "Editer #{@tournament.name}" %>
+	   <%= link_to "supprimer", @tournament, :method => :delete, :confirm => "Sur ?",
+                                :title => "Supprimer #{@tournament.name}" %>
+	    <%= render 'stop_start'%>
+	</td>
+  </tr>
+  <tr>
+    <td class="main round">
       <h1>
         <%= @tournament.name %>
       </h1>
-		<%= @tournament.status %>
+	  <h4><%= @tournament.return_status %></h4>
 		
-	  <%= render 'inscrit_form' if signed_in? %>
+	  <% if signed_in? %>
+		<% if @tournament.open? %>
+			<%= render 'inscrit_form' %>
+		<% end %>
+		<% if @tournament.choix? %>
+			<%= render 'choix_team' %>
+		<% end %>
+	  <% end %>
     </td>
 
     <td class="sidebar round">
@@ -24,7 +39,10 @@
 	    <%= @tournament.inscriptions.count %>	Sur <%= @tournament.participants %>
 		<ul class="users">
 			<% @tournament.users.each do |user| %>
-			<%= render user %>
+			<li>
+				<%= gravatar_for user, :size => 30 %>
+				<%= link_to user.name, user %>
+			</li>
 			<% end %>
 		</ul>
 	</td>

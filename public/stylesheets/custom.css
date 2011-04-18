@@ -103,6 +103,20 @@ a.signup_button {
   border-radius:         10px;
 }
 
+/* Open / Closed */
+
+.open {
+background: #00FF00;
+}
+
+.warning {
+background: #FFCC33
+}
+
+.closed {
+background: #FF3333; 
+}
+
 footer {
   text-align: center;
   margin-top: 10px;
@@ -136,6 +150,16 @@ table.profile {
   margin-bottom: 0;
 }
 
+/*table.tournaments tbody tr:nth-child(even) td,
+  table.tournaments tbody tr.even td {
+  background: transparent;
+}*/
+
+td.fixed {
+  width: 25%;
+  padding: 1em;
+}
+
 td.main {
   width: 70%;
   padding: 1em;
@@ -158,19 +182,14 @@ td.sidebar {
 
 ul.tournaments {
   margin-top: 1em;
-  width: 30%;
 }
 
-.tournaments li {
-  list-style: none;
-  background: #CCCCFF;
-  margin-bottom: 1em;
-  background-color: #CCCCFF;
+.tournaments p {
+  margin-bottom: 5px;
+  width:20%;
 }
 
-.tournaments li.inscrit {
-  background-color: green;
-  }
+
 
 .field_with_errors {
   margin-top: 10px;

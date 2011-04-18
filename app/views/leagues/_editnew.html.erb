@@ -17,6 +17,7 @@
     <%= f.number_field :qualifies %>
   </div>
   <div class="field">
+  <%= f.label "Phases Parentes" %><br />
    <%= f.collection_select(:parent_phase_ids, @tournament.phases.find(:all), :id, :name, {}, :multiple => true) %>
   </div>
   <div class="field">
