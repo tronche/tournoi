@@ -1,15 +1,23 @@
 Tournoi::Application.routes.draw do
 
-	resources :users
+  resources :users
   resources :sessions, :only => [:new, :create, :destroy]
 
   resources :tournaments do
-	resources :phases, :only => [:index, :show]
-	resources :leagues, :except => [:index]
-	member do
-	get :inscriptions
+    member do
+		get :inscriptions
+		put :upstatus
+	end
+	resources :leagues, :controller => "phases", :type => "League", :only => [:new, :create, :update]
+	resources :leagues, :only => [:show]
+	resources :phases, :only => [:index, :destroy, :edit] do
+		get :start, :on => :member
 	end
   end
+ 
+
+
+
  
   resources :inscriptions, :only => [:create, :destroy, :update]
 

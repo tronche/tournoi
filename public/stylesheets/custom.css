@@ -189,6 +189,18 @@ ul.tournaments {
   width:20%;
 }
 
+/* Groups Show */
+
+ul.groups{
+  margin-top: 1em;
+  background: #ffc;
+}
+
+.groups li{
+  list-style: none;
+  margin-top: 1em;
+}
+
 
 
 .field_with_errors {

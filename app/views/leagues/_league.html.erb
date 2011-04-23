@@ -1,8 +1,0 @@
-<li>
-  <%= link_to "Championnat #{league.name}", tournament_league_path(@tournament,league) %>
-  <%= link_to "editer", edit_tournament_league_path(@tournament,league),
-                                :title => "Editer #{league.name}" %>
-  <%= link_to "supprimer", tournament_league_path(@tournament,league), :method => :delete, :confirm => "Sur ?",
-                                :title => "Supprimer #{league.name}" %>
-
-</li>

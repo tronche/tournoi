@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110415201238
+# Schema version: 20110422135540
 #
 # Table name: tournaments
 #
@@ -9,7 +9,7 @@
 #  game         :string(255)
 #  support      :string(255)
 #  conf         :string(255)
-#  status       :string(255)
+#  status       :integer(255)
 #  created_at   :datetime
 #  updated_at   :datetime
 #  participants :integer

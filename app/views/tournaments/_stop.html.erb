@@ -1,5 +1,11 @@
 <%= link_to "Autoriser Inscriptions", 
-          tournament_path(@tournament, 
+          upstatus_tournament_path(@tournament, 
                     :tournament => { :status => 1}),
+          :method => :put, 
+          :confirm => "Sur ?" %>
+		  
+<%= link_to "Demarrer le tournoi", 
+          upstatus_tournament_path(@tournament, 
+                    :tournament => { :status => 3}),
           :method => :put, 
           :confirm => "Sur ?" %>

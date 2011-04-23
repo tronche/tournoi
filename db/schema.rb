@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110416173018) do
+ActiveRecord::Schema.define(:version => 20110422164220) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20110416173018) do
 
   create_table "phases", :force => true do |t|
     t.string   "name"
-    t.string   "status"
+    t.integer  "status",        :limit => 255
     t.string   "type"
     t.text     "description"
     t.integer  "participants"
@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(:version => 20110416173018) do
     t.datetime "updated_at"
   end
 
-  create_table "statuses", :force => true do |t|
+  create_table "seededs", :force => true do |t|
     t.integer  "inscription_id"
     t.integer  "group_id"
-    t.string   "status"
+    t.string   "fixture"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

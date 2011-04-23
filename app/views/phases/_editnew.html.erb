@@ -1,4 +1,4 @@
-<%= form_for ([@tournament,@league]) do |f| %>
+<%= form_for ([@tournament,@phase],:type => @type, :as => :phase ) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
     <%= f.label :name %><br />
@@ -20,20 +20,8 @@
   <%= f.label "Phases Parentes" %><br />
    <%= f.collection_select(:parent_phase_ids, @tournament.phases.find(:all), :id, :name, {}, :multiple => true) %>
   </div>
-  <div class="field">
-    <%= f.label :retour %><br />
-    <%= f.check_box :retour %>
-  </div>
-  <div class="field">
-    <%= f.label :pointsvict %><br />
-    <%= f.number_field :pointsvict %>
-  </div>
-  <div class="field">
-    <%= f.label :pointsnul %><br />
-    <%= f.number_field :pointsnul %>
-  </div>
-  
-  <div class="actions">
+  <%= render :partial => @phase.type.downcase, :locals => { :f => f } %>
+   <div class="actions">
     <%= f.submit button %>
   </div>
 <% end %>

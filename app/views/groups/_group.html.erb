@@ -1,0 +1,10 @@
+<li>
+		<%= group.name %>
+  		<ul class="users">
+			<% group.inscriptions.each do |inscrit| %>
+			<li>
+				<%= link_to inscrit.user.name, inscrit.user.name %>
+			</li>
+			<% end %>
+		</ul>
+</li>

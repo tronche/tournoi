@@ -1,8 +1,10 @@
 <li>
-  <%= link_to phase.name, tournament_phase_path(@tournament,phase) %>
+  <%= link_to "#{phase.type} #{phase.name}", polymorphic_path([@tournament,phase])%>
   <%= link_to "editer", edit_tournament_phase_path(@tournament,phase),
                                 :title => "Editer #{phase.name}" %>
   <%= link_to "supprimer", tournament_phase_path(@tournament,phase), :method => :delete, :confirm => "Sur?",
                                 :title => "Supprimer #{phase.name}" %>
-
+  <%= link_to "demarrer la phase", start_tournament_phase_path(@tournament,phase), :method => :get, :confirm => "Sur?",
+                                :title => "On demarre" %>
+								
 </li>

@@ -1,8 +1,8 @@
 <% if object.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(object.errors.count, "erreur") %> 
-        ont empêché cette <%= object.class.to_s.underscore.humanize.downcase %> 
-        d etre sauvegargé:</h2>
+        ont empeche ce(tte) <%= object.class.to_s.underscore.humanize.downcase %> 
+        d etre sauvegarde:</h2>
     <p>Les champs suivant posent probleme :</p>
     <ul>
     <% object.errors.full_messages.each do |msg| %>

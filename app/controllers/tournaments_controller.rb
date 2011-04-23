@@ -24,7 +24,7 @@ class TournamentsController < ApplicationController
   def create
     @tournament = Tournament.new(params[:tournament])
     if @tournament.save
-	  flash[:success] = "New Tournament Saved!"
+	  flash[:success] = "Nouveau Tournoi Sauvegarde!"
       redirect_to @tournament
     else
       render 'new'
@@ -33,10 +33,10 @@ class TournamentsController < ApplicationController
 
   def edit
 	@tournament = Tournament.find(params[:id])
-    @title = "Edit Tournament"
+    @title = "Editer Tournoi"
   end
   
-    def update
+  def update
 	@tournament = Tournament.find(params[:id])
     if @tournament.update_attributes(params[:tournament])
       flash[:success] = "Tournoi mis a jour."
@@ -46,4 +46,15 @@ class TournamentsController < ApplicationController
       render 'edit'
     end
   end
+  
+    def upstatus
+	@tournament = Tournament.find(params[:id])
+	if @tournament.upstatus(params[:tournament][:status])
+      flash[:success] = "Status du Tournoi mis a jour."
+      redirect_to @tournament
+    else
+	  render 'show'
+    end
+  end
+  
 end

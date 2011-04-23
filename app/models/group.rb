@@ -10,7 +10,11 @@
 #  updated_at :datetime
 #
 
-class Groups < ActiveRecord::Base
+class Group < ActiveRecord::Base
 belongs_to :phase
-has_many :players, :through => :statuses
+has_many :seededs
+
+has_many :inscriptions, :through => :seededs
+has_many :qualifies, :through => :seededs,  :source => :inscription, :conditions => "fixture == 'Q'"
+
 end

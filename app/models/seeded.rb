@@ -1,7 +1,7 @@
 # == Schema Information
 # Schema version: 20110415201238
 #
-# Table name: statuses
+# Table name: seededs
 #
 #  id             :integer         not null, primary key
 #  inscription_id :integer
@@ -11,7 +11,7 @@
 #  updated_at     :datetime
 #
 
-class Status < ActiveRecord::Base
+class Seeded < ActiveRecord::Base
 belongs_to :group
-belongs_to :player
+belongs_to :inscription
 end

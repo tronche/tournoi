@@ -1,0 +1,16 @@
+<table class="phase">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= @phase.type %>
+      </h1>
+	    <%= @phase.name %>
+    </td>
+
+	 <%= render 'shared/error_messages', :object => @phase %>
+    <td class="sidebar round">
+      <strong>Nom</strong> <%= @phase.name %><br />
+	  <strong>Description</strong> <%= @phase.description %><br />
+      <strong>Tournoi</strong> <%= link_to tournament_path(@tournament), @tournament %><br />
+    </td>
+</table>

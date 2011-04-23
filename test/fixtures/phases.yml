@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20110413181005
+# Schema version: 20110422135540
 #
 # Table name: phases
 #
-#  id            :integer         primary key
+#  id            :integer         not null, primary key
 #  name          :string(255)
-#  status        :string(255)
+#  status        :integer(255)
 #  type          :string(255)
 #  description   :text
 #  participants  :integer

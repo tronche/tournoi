@@ -61,17 +61,11 @@ before_save :encrypt_password
 	end
 	
 	def titulaire?(tournament)
-	   inscrit?(tournament) and  inscriptions.find_by_tournament_id(tournament).status == 0
+	   inscrit?(tournament) and  inscriptions.find_by_tournament_id(tournament).status == 1
 	end
 
 	def etat_inscrit(tournament)
-	# Quels etats
-	output = case inscriptions.find_by_tournament_id(tournament).status
-		when 0 then 'Inscrit'
-		when 1 then 'Reserviste'
-		else 'Status Inconnu'
-		end
-	output   
+        inscriptions.find_by_tournament_id(tournament).return_status
 	end
 	
 
